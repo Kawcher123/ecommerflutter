@@ -1,4 +1,5 @@
 import 'package:app/screens/favorit_Screens.dart';
+import 'package:app/screens/login.dart';
 import 'package:app/screens/profile_screens.dart';
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
@@ -9,10 +10,10 @@ class DrowerApp extends StatefulWidget {
 }
 
 class _DrowerAppState extends State<DrowerApp> {
-  LocalStorage storage = LocalStorage("userdata");
+  LocalStorage storage = LocalStorage("usertoken");
   logoutNew() async {
     await storage.clear();
-    //Navigator.of(context).pushReplacementNamed(LoginScreens.routeName);
+    Navigator.of(context).pushReplacementNamed(LoginScrrens.routeName);
   }
 
   @override
