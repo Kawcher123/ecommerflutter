@@ -1,9 +1,12 @@
+import 'package:app/screens/category_products.dart';
 import 'package:app/screens/favorit_Screens.dart';
 import 'package:app/screens/home.dart';
 import 'package:app/screens/login.dart';
+import 'package:app/screens/product_details.dart';
 import 'package:app/screens/product_details_screens.dart';
 import 'package:app/screens/profile_screens.dart';
 import 'package:app/screens/register.dart';
+import 'package:app/store/cart_state.dart';
 import 'package:app/store/product_store.dart';
 import 'package:app/store/user_store.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +26,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => ProductStore()),
         ChangeNotifierProvider(create: (context) => UserStore()),
+        ChangeNotifierProvider(create: (ctx) => CartState()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -56,6 +60,8 @@ class MyApp extends StatelessWidget {
           FavoritScreens.routeName: (ctx) => FavoritScreens(),
           LoginScrrens.routeName: (ctx) => LoginScrrens(),
           RegisterScreens.routeName: (ctx) => RegisterScreens(),
+          CategoryProducts.routename: (ctx) => CategoryProducts(),
+          ProductDetailPage.routeName: (ctx) => ProductDetailPage(),
         },
       ),
     );

@@ -19,62 +19,87 @@ class _DrowerAppState extends State<DrowerApp> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
-        children: [
-          AppBar(
-            title: Text("Welcome"),
-            automaticallyImplyLeading: false,
-          ),
-          ListTile(
-            onTap: () {
-              Navigator.of(context).pushReplacementNamed('/');
-            },
-            trailing: Icon(
-              Icons.home,
-              color: Colors.black,
-            ),
-            title: Text(
-              "Home",
-              style: TextStyle(
-                color: Colors.black,
+      elevation: 0,
+      child: Container(
+        color: Colors.white,
+        child: ListView(
+          children: [
+            Container(
+              height: 200,
+              color: Colors.deepOrange,
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Text(
+                    "Ecom Online Shopping",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
               ),
             ),
-          ),
-          ListTile(
-            onTap: () {
-              Navigator.of(context).pushNamed(ProfileScreens.routeName);
-            },
-            trailing: Icon(
-              Icons.supervised_user_circle,
-              color: Colors.black,
-            ),
-            title: Text(
-              "Profile",
-              style: TextStyle(
+            ListTile(
+              onTap: () {
+                Navigator.of(context).pushReplacementNamed('/home');
+              },
+              leading: Icon(
+                Icons.home,
                 color: Colors.black,
               ),
+              title: Text(
+                "Home",
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+              ),
             ),
-          ),
-          ListTile(
-            onTap: () {
-              Navigator.of(context)
-                  .pushReplacementNamed(FavoritScreens.routeName);
-            },
-            trailing: Icon(
-              Icons.favorite,
-              color: Colors.red,
+            ListTile(
+              onTap: () {
+                Navigator.of(context).pushNamed(ProfileScreens.routeName);
+              },
+              leading: Icon(
+                Icons.supervised_user_circle,
+                color: Colors.black,
+              ),
+              title: Text(
+                "Profile",
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+              ),
             ),
-            title: Text("Favorites"),
-          ),
-          Spacer(),
-          ListTile(
-            onTap: () {
-              logoutNew();
-            },
-            trailing: Icon(Icons.logout),
-            title: Text("Logout"),
-          ),
-        ],
+            ListTile(
+              onTap: () {
+                Navigator.of(context)
+                    .pushReplacementNamed(FavoritScreens.routeName);
+              },
+              leading: Icon(
+                Icons.favorite,
+                color: Colors.red,
+              ),
+              title: Text("Favorites"),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.settings,
+                color: Colors.black,
+              ),
+              title: Text("Setting"),
+            ),
+            ListTile(
+              onTap: () {
+                logoutNew();
+              },
+              leading: Icon(
+                Icons.logout,
+                color: Colors.black,
+              ),
+              title: Text("Logout"),
+            )
+          ],
+        ),
       ),
     );
   }

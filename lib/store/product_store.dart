@@ -11,7 +11,7 @@ class ProductStore with ChangeNotifier {
   List<Product> _products = [];
   LocalStorage storage = new LocalStorage('usertoken');
   Future<bool> getProduct() async {
-    String url = "http://ecomecoomerce.herokuapp.com/api/products/";
+    String url = "https://shopalbd.herokuapp.com/api/products/";
     var token = storage.getItem('token');
 
     try {
@@ -21,11 +21,12 @@ class ProductStore with ChangeNotifier {
       if (response.statusCode == 200) {
         final jsonproduct = jsonDecode(response.body);
         List<Product> newList = [];
-        // print(response.statusCode);
+        //print(response.statusCode);
 
         for (var item in jsonproduct) {
           //print(Product.fromJson(item));
           newList.add(Product.fromJson(item));
+          //print(newList);
         }
         _products = newList;
         notifyListeners();
@@ -49,7 +50,7 @@ class ProductStore with ChangeNotifier {
   }
 
   Future<void> favoritButton(int id) async {
-    String url = 'http://ecomecoomerce.herokuapp.com/api/favorit/';
+    String url = 'https://shopalbd.herokuapp.com/api/favorit/';
     var token = storage.getItem('token');
 
     try {
@@ -64,6 +65,7 @@ class ProductStore with ChangeNotifier {
       // var data = json.decode(response.body);
       // print(data);
       getProduct();
+      notifyListeners();
     } catch (e) {
       print("e favoritButton");
       print(e);

@@ -18,7 +18,7 @@ class FavoritScreens extends StatelessWidget {
         padding: EdgeInsets.all(10),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          childAspectRatio: 3 / 2,
+          childAspectRatio: 0.7,
           mainAxisSpacing: 10,
           crossAxisSpacing: 10,
         ),
@@ -28,7 +28,9 @@ class FavoritScreens extends StatelessWidget {
           return SingleProduct(
             id: data.id,
             title: data.title,
-            image: data.image,
+            marcketPrice: data.marcketPrice,
+            sellingPrice: data.sellingPrice,
+            image: "assets/images/pg2.jpg", //image1,
             favorit: data.favorit,
           );
         },

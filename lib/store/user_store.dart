@@ -11,13 +11,14 @@ class UserStore with ChangeNotifier {
   User _user;
 
   Future<void> getUserData() async {
-    String url = 'http://ecomecoomerce.herokuapp.com/api/user/';
+    String url = 'https://shopalbd.herokuapp.com/api/user/';
     var token = storage.getItem('token');
     try {
       http.Response response =
           await http.get(url, headers: {"Authorization": 'token ${token}'});
+      print(response.statusCode);
       if (response.statusCode == 200) {
-        //print(response.body);
+        print(response.body);
         var data = json.decode(response.body);
         // print(data["id"]);
         User newUser = User(
@@ -28,7 +29,7 @@ class UserStore with ChangeNotifier {
           email: data['email'],
         );
         print(newUser);
-        //print(response.statusCode);
+        print(response.statusCode);
         _user = newUser;
       }
     } catch (e) {
@@ -41,7 +42,7 @@ class UserStore with ChangeNotifier {
   }
 
   Future<bool> loginNow(String uname, String passw) async {
-    String url = 'http://ecomecoomerce.herokuapp.com/api/login/';
+    String url = 'https://shopalbd.herokuapp.com/api/login/';
     try {
       http.Response response = await http.post(url,
           headers: {
@@ -52,7 +53,7 @@ class UserStore with ChangeNotifier {
 
       if (data.containsKey("token")) {
         storage.setItem("token", data['token']);
-        print(storage.getItem('token'));
+        // print(storage.getItem('token'));
         return true;
       }
       return false;
@@ -64,7 +65,7 @@ class UserStore with ChangeNotifier {
   }
 
   Future<bool> registernow(String uname, String passw) async {
-    String url = 'http://ecomecoomerce.herokuapp.com/api/register/';
+    String url = 'https://shopalbd.herokuapp.com/api/register/';
     try {
       http.Response response = await http.post(url,
           headers: {
